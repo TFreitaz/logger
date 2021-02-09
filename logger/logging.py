@@ -83,15 +83,12 @@ class Logger:
         )  # "thales-test:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ2MzU3NzkxYjM0ZWM0YWRmYjNhMjNiN2E0NjI5ODQyOSRlNzE4NmUxNmQwYjU0MDVkYTBhY2U3ODlkZDk1ODMzMA=="
         USERNAME = os.getenv("USERNAME")  # "elastic"
         PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
-
+        print("Dados de acesso:")
         print(CLOUD_ID)
         print(USERNAME)
         print(PASSWORD)
 
-        self.es = Elasticsearch(
-            cloud_id="tfreitaz-deployment:dXMtZWFzdC0xLmF3cy5mb3VuZC5pbyRiZjkzZDNjZTM5MDA0ZjgyYWU5ZTlhMDI5OGFmYmNiOSQzZGNhZGM1M2RkY2Y0NmI1OGRlN2M3YjY1MzJlZjlmMw==",
-            http_auth=("elastic", "wdXVG7MChc7kZU5al9vUcutz"),
-        )
+        self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
 
     def add_input(self, data, hashed=False):
         if hashed:
