@@ -9,7 +9,7 @@ Example of use: to be created.
 import os
 import time
 
-from logger.crypto import Crypto
+from logger.logger.crypto import Crypto
 
 from pprint import pprint
 from elasticsearch import Elasticsearch
