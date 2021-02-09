@@ -81,12 +81,12 @@ class Logger:
         CLOUD_ID = os.getenv(
             "CLOUD_ID"
         )  # "thales-test:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ2MzU3NzkxYjM0ZWM0YWRmYjNhMjNiN2E0NjI5ODQyOSRlNzE4NmUxNmQwYjU0MDVkYTBhY2U3ODlkZDk1ODMzMA=="
-        USERNAME = os.getenv("USERNAME")  # "elastic"
+        LOGIN = os.getenv("LOGIN")  # "elastic"
         PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
-        print("Dados de acesso:")
-        print(CLOUD_ID)
-        print(USERNAME)
-        print(PASSWORD)
+        # print("Dados de acesso:")
+        # print(CLOUD_ID)
+        # print(LOGIN)
+        # print(PASSWORD)
 
         self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
 
