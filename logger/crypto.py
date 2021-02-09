@@ -2,9 +2,9 @@ import os
 import json
 
 from cryptography.fernet import Fernet
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
-load_dotenv()
+load_dotenv(find_dotenv())
 
 HASH_SECRET_KEY = os.getenv("HASH_SECRET_KEY")  # open("secret.key", "rb").read()
 

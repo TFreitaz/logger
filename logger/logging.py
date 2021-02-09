@@ -14,9 +14,9 @@ from logger.crypto import Crypto
 from pprint import pprint
 from elasticsearch import Elasticsearch
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
-load_dotenv()
+load_dotenv(find_dotenv())
 
 CLOUD_ID = os.getenv(
     "CLOUD_ID"
@@ -153,7 +153,7 @@ class Logger:
             self.parts.append(self.part)
             self.part = {}
 
-    def exception(self, exception=None, message=None, status_code=500, exception_type=None):
+    def exception(self, exception=None, message=None, status_code=500, exception_type=None, verbose=False):
         if exception:
             self.exception_message = str(exception) if not self.exception_message else self.exception_message
             self.exception_type = type(exception).__name__
@@ -170,8 +170,8 @@ class Logger:
         }
 
         self.send_log()
-
-        return APIException(message=self.exception_message, error_name=self.error_name, status_code=self.status_code)
+        if verbose:
+            return APIException(message=self.exception_message, error_name=self.error_name, status_code=self.status_code)
 
     def send_log(self):
         self.stop_part()
