@@ -1,11 +1,12 @@
 import os
+import json
 
 from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
 load_dotenv()
 
-HASH_SECRET_KEY = os.getenv("HASH_SECRET_KEY ")  # open("secret.key", "rb").read()
+HASH_SECRET_KEY = os.getenv("HASH_SECRET_KEY")  # open("secret.key", "rb").read()
 
 
 class Crypto:
@@ -13,6 +14,10 @@ class Crypto:
         self.key = HASH_SECRET_KEY
 
     def encrypt(self, message):
+        if type(message) in [dict, list, tuple]:
+            message = json.dumps(message)
+        if type(message) != str:
+            message = str(message)
         encoded_message = message.encode()
         f = Fernet(self.key)
         encrypted_message = f.encrypt(encoded_message)
