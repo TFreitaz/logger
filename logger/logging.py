@@ -84,11 +84,14 @@ class Logger:
         USERNAME = os.getenv("USERNAME")  # "elastic"
         PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
 
-        # print(CLOUD_ID)
-        # print(USERNAME)
-        # print(PASSWORD)
+        print(CLOUD_ID)
+        print(USERNAME)
+        print(PASSWORD)
 
-        self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
+        self.es = Elasticsearch(
+            cloud_id="tfreitaz-deployment:dXMtZWFzdC0xLmF3cy5mb3VuZC5pbyRiZjkzZDNjZTM5MDA0ZjgyYWU5ZTlhMDI5OGFmYmNiOSQzZGNhZGM1M2RkY2Y0NmI1OGRlN2M3YjY1MzJlZjlmMw==",
+            http_auth=("elastic", "wdXVG7MChc7kZU5al9vUcutz"),
+        )
 
     def add_input(self, data, hashed=False):
         if hashed:
