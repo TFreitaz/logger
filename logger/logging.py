@@ -16,20 +16,6 @@ from elasticsearch import Elasticsearch
 
 from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
-
-# print(find_dotenv())
-
-CLOUD_ID = os.getenv(
-    "CLOUD_ID"
-)  # "thales-test:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ2MzU3NzkxYjM0ZWM0YWRmYjNhMjNiN2E0NjI5ODQyOSRlNzE4NmUxNmQwYjU0MDVkYTBhY2U3ODlkZDk1ODMzMA=="
-USERNAME = os.getenv("USERNAME")  # "elastic"
-PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
-
-# print(CLOUD_ID)
-# print(USERNAME)
-# print(PASSWORD)
-
 
 class APIException(Exception):
     """Creates an special Exception for APIs."""
@@ -66,7 +52,7 @@ class Logger:
     REQUEST = "RequestError"
     CAPTCHA = "CaptchaError"
 
-    def __init__(self, app: str = None, route: str = "/", method: str = None):
+    def __init__(self, app: str = None, route: str = "/", method: str = None, env_path=""):
         self.app = app
         self.route = route
         self.method = method
@@ -83,6 +69,22 @@ class Logger:
 
         self.error_name = None
         self.exception_message = None
+
+        if not env_path:
+            env_path = find_dotenv()
+        load_dotenv(env_path)
+
+        print(env_path)
+
+        CLOUD_ID = os.getenv(
+            "CLOUD_ID"
+        )  # "thales-test:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ2MzU3NzkxYjM0ZWM0YWRmYjNhMjNiN2E0NjI5ODQyOSRlNzE4NmUxNmQwYjU0MDVkYTBhY2U3ODlkZDk1ODMzMA=="
+        USERNAME = os.getenv("USERNAME")  # "elastic"
+        PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
+
+        print(CLOUD_ID)
+        print(USERNAME)
+        print(PASSWORD)
 
         self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
 
