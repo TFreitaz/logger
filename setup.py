@@ -12,6 +12,6 @@ setuptools.setup(
     long_description=long_description,
     url="https://github.com/arocketman/git-and-pip",
     packages=setuptools.find_packages(),
-    install_requires=["cryptography==3.2.1", "elasticsearch==6.8.1", "python-dotenv==0.15.0"],
+    install_requires=["cryptography==3.2.1", "elasticsearch==7.10.1", "python-dotenv==0.15.0"],
     classifiers=["Programming Language :: Python :: 3", "Operating System :: OS Independent"],
 )
