@@ -80,6 +80,21 @@ class Logger:
 
         self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
 
+    def clear_log(self):
+        self.status_code = 200
+        self.inputs: list = []
+        self.parts: list = []
+        self.part: dict = {}
+        self.part_start_time = 0
+        self.running_time = None
+
+        self.exception_info = None
+        self.exception_type = None
+        self.exception_message = None
+
+        self.error_name = None
+        self.exception_message = None
+
     def add_input(self, data, hashed=False):
         if hashed:
             crypto = Crypto()
