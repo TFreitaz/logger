@@ -70,6 +70,8 @@ class Logger:
         self.error_name = None
         self.exception_message = None
 
+        self.dict = {}
+
         if not env_path:
             env_path = find_dotenv()
         load_dotenv(env_path)
