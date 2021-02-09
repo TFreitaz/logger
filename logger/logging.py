@@ -134,6 +134,8 @@ class Logger:
         self.error_name = None
         self.exception_message = None
 
+        self.dict = {}
+
     def set_log(self, error_name, message=""):
         self.error_name = error_name
         self.exception_message = message
@@ -204,7 +206,7 @@ class Logger:
         }
 
         if self.exception_info:
-            self.d["exception"] = self.exception_info
+            self.dict["exception"] = self.exception_info
 
         return self.dict
 
