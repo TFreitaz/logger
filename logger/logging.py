@@ -1,7 +1,15 @@
+"""Log creator for APIs
+
+This package allows user to create logs on an API easly, tracing the time spent along the whole running and
+along defined parts of code, and sending the entire log to an ElasticSearch server.
+
+Example of use: to be created.
+"""
+
 import os
 import time
 
-from Logging.crypto import Crypto
+from logger.crypto import Crypto
 
 from pprint import pprint
 from elasticsearch import Elasticsearch
@@ -18,6 +26,8 @@ PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
 
 
 class APIException(Exception):
+    """Creates an special Exception for APIs."""
+
     CRAWLER = "CrawlerError"
     PARSE = "ParseError"
     ELEMENT = "ElementError"
@@ -41,6 +51,8 @@ class APIException(Exception):
 
 
 class Logger:
+    """Manager for log creation."""
+
     CRAWLER = "CrawlerError"
     PARSE = "ParseError"
     ELEMENT = "ElementError"
