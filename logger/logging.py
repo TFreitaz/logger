@@ -99,7 +99,8 @@ class Logger:
                 value = data[param]
                 if hashed:
                     value = crypto.encrypt(value)
-
+                if type(value) == bytes:
+                    value = value.decode
                 inp = {"name": param, "value": value, "hashed": hashed}
                 self.inputs.append(inp)
 
@@ -107,7 +108,8 @@ class Logger:
             for value in data:
                 if hashed:
                     value = crypto.encrypt(value)
-
+                if type(value) == bytes:
+                    value = value.decode
                 inp = {"name": len(self.inputs), "value": value, "hashed": hashed}
 
                 self.inputs.append(inp)
@@ -116,7 +118,8 @@ class Logger:
             value = data
             if hashed:
                 value = crypto.encrypt(value)
-
+            if type(value) == bytes:
+                value = value.decode
             inp = {"name": len(self.inputs), "value": value, "hashed": hashed}
 
             self.inputs.append(inp)
