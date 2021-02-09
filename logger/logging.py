@@ -18,15 +18,17 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
+# print(find_dotenv())
+
 CLOUD_ID = os.getenv(
     "CLOUD_ID"
 )  # "thales-test:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ2MzU3NzkxYjM0ZWM0YWRmYjNhMjNiN2E0NjI5ODQyOSRlNzE4NmUxNmQwYjU0MDVkYTBhY2U3ODlkZDk1ODMzMA=="
 USERNAME = os.getenv("USERNAME")  # "elastic"
 PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
 
-print(CLOUD_ID)
-print(USERNAME)
-print(PASSWORD)
+# print(CLOUD_ID)
+# print(USERNAME)
+# print(PASSWORD)
 
 
 class APIException(Exception):
@@ -72,7 +74,7 @@ class Logger:
         self.inputs: list = []
         self.parts: list = []
         self.part: dict = {}
-        self.part_start_time = 0
+        self.part_start_time = 0.0
         self.running_time = None
 
         self.exception_info = None
