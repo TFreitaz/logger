@@ -88,7 +88,7 @@ class Logger:
         # print(LOGIN)
         # print(PASSWORD)
 
-        self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
+        self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(LOGIN, PASSWORD))
 
     def add_input(self, data, hashed=False):
         if hashed:
