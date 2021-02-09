@@ -193,7 +193,7 @@ class Logger:
 
         # pprint(log)
 
-        res = es.index(index="logs", body=log)
+        __annotations__ = self.es.index(index="logs", body=log)
 
     def to_dict(self):
         if type(self.method) == str:
