@@ -24,6 +24,10 @@ CLOUD_ID = os.getenv(
 USERNAME = os.getenv("USERNAME")  # "elastic"
 PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
 
+print(CLOUD_ID)
+print(USERNAME)
+print(PASSWORD)
+
 
 class APIException(Exception):
     """Creates an special Exception for APIs."""
