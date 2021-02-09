@@ -88,21 +88,6 @@ class Logger:
 
         self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
 
-    def clear_log(self):
-        self.status_code = 200
-        self.inputs: list = []
-        self.parts: list = []
-        self.part: dict = {}
-        self.part_start_time = 0
-        self.running_time = None
-
-        self.exception_info = None
-        self.exception_type = None
-        self.exception_message = None
-
-        self.error_name = None
-        self.exception_message = None
-
     def add_input(self, data, hashed=False):
         if hashed:
             crypto = Crypto()
@@ -133,6 +118,21 @@ class Logger:
             inp = {"name": len(self.inputs), "value": value, "hashed": hashed}
 
             self.inputs.append(inp)
+
+    def clear_log(self):
+        self.status_code = 200
+        self.inputs: list = []
+        self.parts: list = []
+        self.part: dict = {}
+        self.part_start_time = 0
+        self.running_time = None
+
+        self.exception_info = None
+        self.exception_type = None
+        self.exception_message = None
+
+        self.error_name = None
+        self.exception_message = None
 
     def set_log(self, error_name, message=""):
         self.error_name = error_name
@@ -195,7 +195,7 @@ class Logger:
         if type(self.method) == str:
             self.method = self.method.upper()
 
-        d = {
+        self.dict = {
             "app": self.app,
             "route": self.route,
             "method": self.method,
@@ -204,6 +204,9 @@ class Logger:
         }
 
         if self.exception_info:
-            d["exception"] = self.exception_info
+            self.d["exception"] = self.exception_info
 
-        return d
+        return self.dict
+
+    def tracelog(self, object):
+        self.last_trace = object
