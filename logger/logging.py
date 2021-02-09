@@ -76,7 +76,7 @@ class Logger:
             env_path = find_dotenv()
         load_dotenv(env_path)
 
-        print(env_path)
+        # print(env_path)
 
         CLOUD_ID = os.getenv(
             "CLOUD_ID"
@@ -84,9 +84,9 @@ class Logger:
         USERNAME = os.getenv("USERNAME")  # "elastic"
         PASSWORD = os.getenv("PASSWORD")  # "zRXefzq5wgRFa7wvEqfuokhD"
 
-        print(CLOUD_ID)
-        print(USERNAME)
-        print(PASSWORD)
+        # print(CLOUD_ID)
+        # print(USERNAME)
+        # print(PASSWORD)
 
         self.es = Elasticsearch(cloud_id=CLOUD_ID, http_auth=(USERNAME, PASSWORD))
 
@@ -191,9 +191,9 @@ class Logger:
 
         log = self.to_dict()
 
-        pprint(log)
+        # pprint(log)
 
-        # res = es.index(index='logs', body=log)
+        res = es.index(index="logs", body=log)
 
     def to_dict(self):
         if type(self.method) == str:
