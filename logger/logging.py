@@ -100,7 +100,7 @@ class Logger:
                 if hashed:
                     value = crypto.encrypt(value)
                 if type(value) == bytes:
-                    value = value.decode
+                    value = value.decode()
                 inp = {"name": param, "value": value, "hashed": hashed}
                 self.inputs.append(inp)
 
@@ -109,7 +109,7 @@ class Logger:
                 if hashed:
                     value = crypto.encrypt(value)
                 if type(value) == bytes:
-                    value = value.decode
+                    value = value.decode()
                 inp = {"name": len(self.inputs), "value": value, "hashed": hashed}
 
                 self.inputs.append(inp)
@@ -119,7 +119,7 @@ class Logger:
             if hashed:
                 value = crypto.encrypt(value)
             if type(value) == bytes:
-                value = value.decode
+                value = value.decode()
             inp = {"name": len(self.inputs), "value": value, "hashed": hashed}
 
             self.inputs.append(inp)
